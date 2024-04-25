@@ -1,0 +1,19 @@
+.Container {
+  font-family: "Roboto Mono", monospace;
+  background: white;
+}
+
+.Weather {
+  background-color: aliceblue;
+  max-width: 30%;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 60px;
+  padding: 20px 20px 20px 20px;
+  border-radius: 30px;
+}
+
+.search-bar {
+  width: 100%;
+  text-align: center;
+}
