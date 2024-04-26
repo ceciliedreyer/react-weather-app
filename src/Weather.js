@@ -13,10 +13,11 @@ export default function Weather() {
       temperature: response.data.main.temp,
       town: response.data.name,
     });
+
+    setLoaded(true);
   }
 
   function updateCity(event) {
-    setLoaded(true);
     setCity(event.target.value);
   }
 
@@ -69,13 +70,10 @@ export default function Weather() {
       </div>
     );
   } else {
-    return (
-      <div>
-        <div className="header-form">
-          {form}
-          {footer}
-        </div>
-      </div>
-    );
+    let apiKey = "9dc3b95c42fa941f8763112d84a09d1e";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(updateWeather);
+
+    return <p>loading...</p>;
   }
 }
