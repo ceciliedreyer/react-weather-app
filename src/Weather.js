@@ -27,24 +27,35 @@ export default function Weather() {
     axios.get(apiUrl).then(updateWeather);
   }
 
+  let form = (
+    <form class="search-form" onClick={handleSearch}>
+      <input
+        type="search"
+        placeholder="Search for a city..."
+        onChange={updateCity}
+        className="search-form-input"
+      />
+      <input type="submit" value="search" className="search-form-button" />
+    </form>
+  );
+
+  let footer = (
+    <footer>
+      Coded by{" "}
+      <a href="https://github.com/ceciliedreyer"> Cecilie Dreyer Lyng</a> and is
+      open-sourced{" "}
+      <a href="https://github.com/ceciliedreyer/Vanilla-Weather-Search">
+        on GitHub {""}
+      </a>
+      and hosted {""}
+      <a href="https://vejr-app.netlify.app/">on Netlify</a>
+    </footer>
+  );
+
   if (loaded) {
     return (
       <div>
-        <div className="header-form">
-          <form class="search-form" onClick={handleSearch}>
-            <input
-              type="search"
-              placeholder="Search for a city..."
-              onChange={updateCity}
-              className="search-form-input"
-            />
-            <input
-              type="submit"
-              value="search"
-              className="search-form-button"
-            />
-          </form>
-        </div>
+        <div className="header-form">{form}</div>
         <div className="Weather">
           <div className="header-info">
             <div className="current-location">{weather.town}</div>
@@ -53,6 +64,7 @@ export default function Weather() {
             <h2>{Math.round(weather.temperature)}</h2>
             <p className="degree-icon">ºC</p>
           </div>
+          {footer}
         </div>
       </div>
     );
@@ -60,19 +72,8 @@ export default function Weather() {
     return (
       <div>
         <div className="header-form">
-          <form class="search-form" onClick={handleSearch}>
-            <input
-              type="search"
-              placeholder="Search for a city..."
-              onChange={updateCity}
-              className="search-form-input"
-            />
-            <input
-              type="submit"
-              value="search"
-              className="search-form-button"
-            />
-          </form>
+          {form}
+          {footer}
         </div>
       </div>
     );
