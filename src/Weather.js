@@ -44,7 +44,7 @@ export default function Weather() {
       Coded by{" "}
       <a href="https://github.com/ceciliedreyer"> Cecilie Dreyer Lyng</a> and is
       open-sourced{" "}
-      <a href="https://github.com/ceciliedreyer/Vanilla-Weather-Search">
+      <a href="https://github.com/ceciliedreyer/react-weather-app">
         on GitHub {""}
       </a>
       and hosted {""}
