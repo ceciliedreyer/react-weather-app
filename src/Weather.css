@@ -5,15 +5,67 @@
 
 .Weather {
   background-color: aliceblue;
-  max-width: 30%;
+  max-width: 40%;
   margin: 0 auto;
   margin-top: 10px;
   margin-bottom: 60px;
   padding: 20px 20px 20px 20px;
   border-radius: 30px;
+  text-align: center;
 }
 
-.search-bar {
+.Weather h2 {
+  font-size: 86px;
+}
+
+.results {
+  display: flex;
+  justify-content: center;
+}
+
+.results .degree-icon {
+  position: relative;
+  margin-top: 90px;
+}
+
+.search-form {
   width: 100%;
   text-align: center;
+}
+
+.search-form-input {
+  border: none;
+  width: 60%;
+  background-color: white;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 12px;
+  border: 1px solid white;
+  text-align: center;
+}
+
+.search-form-button {
+  border: 1px solid blue;
+  background-color: blue;
+  color: aliceblue;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.search-form-button:hover {
+  background-color: white;
+  border: 1px solid blue;
+  color: blue;
+}
+
+.header-form {
+  border-bottom: 1px solid white;
+  background-color: aliceblue;
+  max-width: 40%;
+  margin: 0 auto;
+  padding: 10px 20px;
+  margin-top: 80px;
+  border-radius: 30px;
 }
