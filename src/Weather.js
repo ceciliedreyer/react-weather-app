@@ -4,6 +4,7 @@ import { MaterialSymbol } from "react-material-symbols";
 
 import "./Weather.css";
 import Time from "./Time";
+import UnitConversion from "./UnitConversion";
 
 export default function Weather() {
   const [city, setCity] = useState("Aarhus");
@@ -84,10 +85,7 @@ export default function Weather() {
               </div>
             </div>
           </div>
-          <div className="results">
-            <h2>{Math.round(weather.temperature)}</h2>
-            <p className="degree-icon">ºC</p>
-          </div>
+          <UnitConversion temp={weather.temperature} />
           <div id="current-temp-icon">
             <img
               src={weather.icon}
