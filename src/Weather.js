@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import "./Weather.css";
+import Time from "./Time";
 
 export default function Weather() {
   const [city, setCity] = useState("Aarhus");
@@ -58,6 +59,9 @@ export default function Weather() {
       <div>
         <div className="header-form">{form}</div>
         <div className="Weather">
+          <div className="current-time">
+            <Time />
+          </div>
           <div className="header-info">
             <div className="current-location">{weather.town}</div>
           </div>
