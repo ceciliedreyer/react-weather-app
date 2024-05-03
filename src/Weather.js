@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { MaterialSymbol } from "react-material-symbols";
 
 import "./Weather.css";
 import Time from "./Time";
@@ -59,15 +60,66 @@ export default function Weather() {
       <div>
         <div className="header-form">{form}</div>
         <div className="Weather">
-          <div className="current-time">
-            <Time />
-          </div>
-          <div className="header-info">
-            <div className="current-location">{weather.town}</div>
+          <div className="header-info container mb-5">
+            <div className="row">
+              <div className="current-location col-6">
+                {" "}
+                <MaterialSymbol
+                  icon="fmd_good"
+                  size={9}
+                  grade={-2}
+                  color="black"
+                />
+                {weather.town}
+              </div>
+              <div className="current-time col-6">
+                <Time />
+              </div>
+            </div>
           </div>
           <div className="results">
             <h2>{Math.round(weather.temperature)}</h2>
             <p className="degree-icon">ºC</p>
+          </div>
+          <div id="current-temp-icon">
+            <img
+              src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png"
+              class="current-temp-icon"
+            />
+          </div>
+          <div class="current-temp-description" id="current-temp-description">
+            broken clouds
+          </div>
+          <div className="container weather-detail mt-5">
+            <div className="row">
+              <div className="col-4">
+                <MaterialSymbol
+                  icon="fmd_good"
+                  size={9}
+                  grade={-2}
+                  color="black"
+                />{" "}
+                <span id="weather-detail-humidity">weather detail </span>
+              </div>
+              <div className="col-4">
+                <MaterialSymbol
+                  icon="fmd_good"
+                  size={9}
+                  grade={-2}
+                  color="black"
+                />
+                <span id="weather-detail-humidity">weather detail </span>
+              </div>
+              <div className="col-4">
+                <MaterialSymbol
+                  icon="fmd_good"
+                  size={9}
+                  grade={-2}
+                  color="black"
+                />
+                <span id="weather-detail-humidity">weather detail </span>
+              </div>
+            </div>
           </div>
           {footer}
         </div>

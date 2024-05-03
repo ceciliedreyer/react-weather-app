@@ -25,7 +25,7 @@
 
 .results .degree-icon {
   position: relative;
-  margin-top: 90px;
+  margin-top: 10px;
 }
 
 .search-form {
@@ -80,4 +80,30 @@ footer {
 
 a {
   color: blue;
+}
+
+.header-info.container {
+  font-size: 10px;
+  padding: 0;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.current-location {
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+.current-time {
+  text-align: right;
+  padding: 0;
+  margin: 0;
+}
+
+.weather-detail {
+  font-size: 10px;
 }
