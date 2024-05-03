@@ -11,9 +11,16 @@ export default function Weather() {
   const [loaded, setLoaded] = useState(false);
 
   function updateWeather(response) {
+    console.log(response.data);
     setWeather({
       temperature: response.data.main.temp,
       town: response.data.name,
+      wind: response.data.wind.speed,
+      description: response.data.weather[0].description,
+      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      feelsLike: response.data.main.feels_like,
+      humidity: response.data.main.humidity,
+      time: new Date(response.data.dt * 1000),
     });
 
     setLoaded(true);
@@ -69,11 +76,11 @@ export default function Weather() {
                   size={9}
                   grade={-2}
                   color="black"
-                />
+                />{" "}
                 {weather.town}
               </div>
               <div className="current-time col-6">
-                <Time />
+                <Time time={weather.time} />
               </div>
             </div>
           </div>
@@ -83,41 +90,44 @@ export default function Weather() {
           </div>
           <div id="current-temp-icon">
             <img
-              src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png"
+              src={weather.icon}
+              alt={weather.description}
               class="current-temp-icon"
             />
           </div>
           <div class="current-temp-description" id="current-temp-description">
-            broken clouds
+            {weather.description}
           </div>
           <div className="container weather-detail mt-5">
             <div className="row">
               <div className="col-4">
                 <MaterialSymbol
-                  icon="fmd_good"
-                  size={9}
-                  grade={-2}
-                  color="black"
-                />{" "}
-                <span id="weather-detail-humidity">weather detail </span>
-              </div>
-              <div className="col-4">
-                <MaterialSymbol
-                  icon="fmd_good"
+                  icon="humidity_mid"
                   size={9}
                   grade={-2}
                   color="black"
                 />
-                <span id="weather-detail-humidity">weather detail </span>
+                <span id="weather-detail-humidity">{weather.humidity}%</span>
               </div>
               <div className="col-4">
                 <MaterialSymbol
-                  icon="fmd_good"
+                  icon="thermostat"
                   size={9}
                   grade={-2}
                   color="black"
                 />
-                <span id="weather-detail-humidity">weather detail </span>
+                <span id="weather-detail-feelsLike">
+                  {Math.round(weather.feelsLike)}ºC
+                </span>
+              </div>
+              <div className="col-4">
+                <MaterialSymbol
+                  icon="clear_all"
+                  size={9}
+                  grade={-2}
+                  color="black"
+                />
+                <span id="weather-detail-wind">{weather.wind}km/h</span>
               </div>
             </div>
           </div>

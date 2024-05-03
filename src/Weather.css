@@ -107,3 +107,7 @@ a {
 .weather-detail {
   font-size: 10px;
 }
+
+.current-temp-icon {
+  width: 150px;
+}
