@@ -5,6 +5,7 @@ import { MaterialSymbol } from "react-material-symbols";
 import "./Weather.css";
 import Time from "./Time";
 import UnitConversion from "./UnitConversion";
+import Forecast from "./Forecast";
 
 export default function Weather() {
   const [city, setCity] = useState("Aarhus");
@@ -12,7 +13,6 @@ export default function Weather() {
   const [loaded, setLoaded] = useState(false);
 
   function updateWeather(response) {
-    console.log(response.data);
     setWeather({
       temperature: response.data.main.temp,
       town: response.data.name,
@@ -22,6 +22,7 @@ export default function Weather() {
       feelsLike: response.data.main.feels_like,
       humidity: response.data.main.humidity,
       time: new Date(response.data.dt * 1000),
+      coordinates: response.data.coord,
     });
 
     setLoaded(true);
@@ -39,7 +40,7 @@ export default function Weather() {
   }
 
   let form = (
-    <form class="search-form" onClick={handleSearch}>
+    <form className="search-form" onClick={handleSearch}>
       <input
         type="search"
         placeholder="Search for a city..."
@@ -97,7 +98,7 @@ export default function Weather() {
             {weather.description}
           </div>
           <div className="container weather-detail mt-5">
-            <div className="row">
+            <div className="row mb-5">
               <div className="col-4">
                 <MaterialSymbol
                   icon="humidity_mid"
@@ -127,6 +128,9 @@ export default function Weather() {
                 />
                 <span id="weather-detail-wind">{weather.wind}km/h</span>
               </div>
+            </div>
+            <div className="forecast-container">
+              <Forecast coord={weather.coordinates} />
             </div>
           </div>
           {footer}

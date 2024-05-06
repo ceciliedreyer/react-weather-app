@@ -1,0 +1,22 @@
+.Forecast {
+  background: white;
+  border-radius: 30px;
+  padding: 20px;
+  opacity: 0.8;
+}
+
+.forecast-icon {
+  width: 64px;
+  height: 64px;
+}
+
+.forecast-day,
+.forecast-min {
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+.forecast-max {
+  font-size: 10px;
+  font-weight: 500;
+}
