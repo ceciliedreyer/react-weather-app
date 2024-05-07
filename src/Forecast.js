@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Forecast.css";
 
@@ -8,21 +8,28 @@ export default function Forecast(props) {
   const [loaded, setLoaded] = useState(false);
   const [forecast, setForecast] = useState("");
 
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.coord]);
+
   function getForecast(response) {
     console.log(response.data);
     setLoaded(true);
-    setForecast({
-      tempMin: response.data.list[0].main.temp_min,
-      tempMax: response.data.list[0].main.temp_max,
-      time: response.data.list[0].dt,
-    });
+    setForecast(response.data.daily);
   }
 
   if (loaded) {
     return (
       <div className="Forecast">
         <div className="row">
-          <DailyForecast data={forecast} />
+          {forecast.map(function (day, index) {
+            if (index < 3)
+              return (
+                <div className="col" key={index}>
+                  <DailyForecast data={day} />
+                </div>
+              );
+          })}
         </div>
       </div>
     );
@@ -31,7 +38,7 @@ export default function Forecast(props) {
     let lat = props.coord.lat;
     let apiKey = "9dc3b95c42fa941f8763112d84a09d1e";
 
-    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+    let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 
     axios.get(apiUrl).then(getForecast);
 
